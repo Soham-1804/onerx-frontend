@@ -1,0 +1,153 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 18 60% 97%;
+    --foreground: 18 30% 10%;
+
+    --card: 18 60% 97%;
+    --card-foreground: 18 30% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 18 30% 10%;
+
+    --primary: 18 51% 58%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 18 30% 93%;
+    --secondary-foreground: 18 30% 10%;
+
+    --muted: 18 20% 90%;
+    --muted-foreground: 18 15% 40%;
+
+    --accent: 18 40% 85%;
+    --accent-foreground: 18 30% 10%;
+
+    --destructive: 0 72% 35%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 18 20% 85%;
+    --input: 18 20% 85%;
+    --ring: 18 51% 58%;
+
+    --radius: 0.5rem;
+
+    /* OneRx Brand Tokens */
+    --terra-50: 18 60% 97%;
+    --terra-100: 18 45% 92%;
+    --terra-200: 18 40% 84%;
+    --terra-300: 18 45% 76%;
+    --terra-400: 18 50% 67%;
+    --terra-500: 18 51% 58%;
+    --terra-600: 18 55% 45%;
+    --terra-700: 18 60% 39%;
+    --terra-800: 18 65% 34%;
+    --terra-950: 18 70% 14%;
+
+    --warm-950: 18 20% 9%;
+    --warm-800: 18 20% 16%;
+    --warm-600: 18 15% 37%;
+    --warm-400: 18 12% 57%;
+    --warm-200: 18 15% 85%;
+    --warm-100: 18 15% 92%;
+
+    --success: 160 90% 20%;
+    --warning: 30 85% 31%;
+    --error: 0 70% 35%;
+    --info: 224 70% 40%;
+    --violet: 263 70% 42%;
+
+    --sidebar-background: 18 70% 14%;
+    --sidebar-foreground: 18 45% 92%;
+    --sidebar-primary: 18 51% 58%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 18 65% 34%;
+    --sidebar-accent-foreground: 18 45% 92%;
+    --sidebar-border: 18 20% 20%;
+    --sidebar-ring: 18 51% 58%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display;
+  }
+}
+
+@layer utilities {
+  .section-padding {
+    @apply py-20 md:py-24 lg:py-28;
+  }
+  .container-wide {
+    @apply max-w-7xl mx-auto px-5 sm:px-6 lg:px-8;
+  }
+}
+
+@layer components {
+  .hover-lift {
+    @apply transition-transform duration-200 ease-out;
+  }
+  .hover-lift:hover {
+    @apply -translate-y-1;
+  }
+}
+
+/* Float animation for hero card */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.page-fade {
+  animation: fade-up 400ms ease both;
+}
+
+@keyframes count-up {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slide-in-left {
+  from { opacity: 0; transform: translateX(-30px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slide-in-right {
+  from { opacity: 0; transform: translateX(30px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes play-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.04); }
+}
+
+.animate-play-pulse {
+  animation: play-pulse 2s ease-in-out infinite;
+}
+
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
