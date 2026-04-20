@@ -11,11 +11,11 @@ const hubItems = [
 ];
 
 const navLinks = [
-  { label: "Home", href: "#" },
-  { label: "About", href: "#about" },
+  { label: "Home", href: "/" }, // Updated to route to the root
+  { label: "About", href: "/about" },
   { label: "OneRx Hub", href: "#modules", hasDropdown: true },
   { label: "Membership", href: "#pricing" },
-  { label: "Contact", href: "#contact" },
+  { label: "Contact", href: "/contact" },
 ];
 
 const Navigation = () => {
@@ -38,7 +38,11 @@ const Navigation = () => {
       aria-label="Main navigation"
     >
       <div className="container-wide flex items-center justify-between h-16 lg:h-18">
-        <OneRxLogo variant="dark" />
+        
+        {/* Desktop Logo - Wrapped in Link to Landing Page */}
+        <Link to="/" aria-label="OneRx Home" className="transition-opacity hover:opacity-80">
+          <OneRxLogo variant="dark" />
+        </Link>
 
         {/* Desktop links */}
         <div className="hidden lg:flex items-center gap-8">
@@ -74,9 +78,9 @@ const Navigation = () => {
 
         {/* Desktop CTAs */}
         <div className="hidden lg:flex items-center gap-3">
-          <a href="#" className="px-5 py-2 text-sm border border-terra-500 text-white rounded-lg hover:bg-terra-500/10 transition-colors">
+          <Link to="/login" className="px-5 py-2 text-sm border border-terra-500 text-white rounded-lg hover:bg-terra-500/10 transition-colors">
             Login
-          </a>
+          </Link>
           <a href="#pricing" className="px-5 py-2 text-sm bg-terra-500 text-white rounded-lg hover:bg-terra-600 transition-colors active:scale-[0.97]">
             Get Started
           </a>
@@ -96,7 +100,12 @@ const Navigation = () => {
       {mobileOpen && (
         <div className="fixed inset-0 z-50 bg-terra-950 flex flex-col lg:hidden">
           <div className="flex items-center justify-between px-5 h-16">
-            <OneRxLogo variant="dark" />
+            
+            {/* Mobile Logo - Wrapped in Link to Landing Page & closes menu on click */}
+            <Link to="/" onClick={() => setMobileOpen(false)} aria-label="OneRx Home">
+              <OneRxLogo variant="dark" />
+            </Link>
+
             <button onClick={() => setMobileOpen(false)} aria-label="Close menu" className="text-white p-2">
               <X className="w-6 h-6" />
             </button>
@@ -137,8 +146,8 @@ const Navigation = () => {
               </div>
             ))}
             <div className="mt-8 flex flex-col gap-3">
-              <a href="#" className="text-center px-5 py-3 border border-terra-500 text-white rounded-lg">Login</a>
-              <a href="#pricing" className="text-center px-5 py-3 bg-terra-500 text-white rounded-lg">Get Started</a>
+              <Link to="/login" onClick={() => setMobileOpen(false)} className="text-center px-5 py-3 border border-terra-500 text-white rounded-lg">Login</Link>
+              <a href="#pricing" onClick={() => setMobileOpen(false)} className="text-center px-5 py-3 bg-terra-500 text-white rounded-lg">Get Started</a>
             </div>
           </div>
         </div>

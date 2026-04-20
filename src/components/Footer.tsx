@@ -19,9 +19,8 @@ const footerLinks = {
     { name: "Rx Brands", path: "/rx-brands" },
   ],
   Resources: [
-    { name: "Blog", path: "/blog" },
-    { name: "Documentation", path: "/docs" },
-    { name: "Support", path: "/support" },
+    { name: "Blog", path: "/insights" },
+    { name: "Support", path: "/documentation" },
   ],
 };
 
@@ -71,7 +70,7 @@ const Footer = () => {
                 </a>
               </li>
               <li>
-                <a href="https://onerx.ca" target="_blank" className="hover:text-terra-300">
+                <a href="https://www.myonerx.ca" target="_blank" className="hover:text-terra-300">
                   onerx.ca
                 </a>
               </li>

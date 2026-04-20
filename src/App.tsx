@@ -9,11 +9,19 @@ import RxManager from "./pages/RxManager";
 import RxSuite from "./pages/RxSuite";
 import RxIncident from "./pages/RxIncident";
 import NotFound from "./pages/NotFound.tsx";
-import About from "./pages/About";
+import About from "./pages/About.tsx";
 import FAQ from "./pages/FAQ";
-import Contact from "./pages/Contact";
+import Login from "./pages/Login.tsx";
+
 import Privacy from "./pages/Privacy";
 import Terms from "./pages/Terms";
+import Blog from "./pages/Blog.jsx";
+import Docs from "./pages/Docs";
+import Careers from "./pages/Careers.tsx";
+import Insights from "./pages/Insights.tsx";
+import Documentation from "./pages/Documentation.tsx";
+import Press from "./pages/Press.tsx";
+import Contact from "./pages/Contact.tsx";
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -33,6 +41,13 @@ const App = () => (
             <Route path="/contact" element={<Contact />} />
             <Route path="/privacy" element={<Privacy />} />
             <Route path="/terms" element={<Terms />} />
+            <Route path="/blog" element={<Blog/>}/>
+            <Route path="/docs" element={<Docs/>}/>
+            <Route path="/careers" element={<Careers/>}/>
+            <Route path="/insights" element={<Insights/>}/>
+            <Route path="/documentation" element={<Documentation/>}/>
+            <Route path="/press" element={<Press/>}/>
+            <Route path="/login" element={<Login/>}/>
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
