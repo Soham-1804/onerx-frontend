@@ -33,8 +33,8 @@ export default function RxSuite() {
         <div className="container-wide flex flex-col lg:flex-row items-center gap-12 lg:gap-8">
           <div className="w-full lg:w-1/2">
             <div className="text-sm text-terra-400 mb-3 flex items-center gap-2">
-              <Link to="/" className="hover:text-white transition-colors">OneRx Hub</Link> 
-              <span>/</span> 
+              <Link to="/" className="hover:text-white transition-colors"></Link> 
+              <span></span> 
               <span className="text-white">Rx Suite</span>
             </div>
             <div className="uppercase tracking-widest text-[11px] text-terra-500 mb-4 font-medium">CLINICAL DISPENSING ENGINE</div>

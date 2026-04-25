@@ -15,7 +15,7 @@ const CtaBanner = () => {
         </p>
         <div className="flex flex-wrap justify-center gap-4 mt-8">
           <a
-            href="#pricing"
+            href="/pricing"
             className="inline-flex items-center justify-center h-12 px-8 bg-white text-terra-950 font-medium rounded-lg hover:bg-terra-50 transition-colors active:scale-[0.97]"
           >
             Get started today

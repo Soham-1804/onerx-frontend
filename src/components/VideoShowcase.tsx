@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useRef } from "react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const MODULE_DATA = [
@@ -14,7 +14,8 @@ const MODULE_DATA = [
       "AI-flagged savings opportunities",
     ],
     cta: "Explore Rx Intelligence →",
-    duration: "2 min walkthrough",
+    link: "/rx-intelligence", // Added redirect link
+    image: "/public/pexels-rdne-6129881.jpg", 
     icon: (
       <svg width="40" height="40" viewBox="0 0 40 40" fill="none" className="text-terra-500">
         <polyline points="4,30 12,22 20,26 28,14 36,10" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
@@ -34,7 +35,8 @@ const MODULE_DATA = [
       "Analytics-driven vendor performance scoring",
     ],
     cta: "Explore Rx Manager →",
-    duration: "2 min walkthrough",
+    link: "/rx-manager", // Added redirect link
+    image: "/public/pexels-edward-jenner-4031689.jpg", 
     icon: (
       <svg width="40" height="40" viewBox="0 0 40 40" fill="none" className="text-terra-500">
         <line x1="8" y1="12" x2="32" y2="12" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
@@ -43,7 +45,6 @@ const MODULE_DATA = [
       </svg>
     ),
   },
- 
   {
     id: "suite",
     label: "Rx Suite",
@@ -56,7 +57,8 @@ const MODULE_DATA = [
       "AI chatbot for patient-facing queries",
     ],
     cta: "Explore Rx Suite →",
-    duration: "2 min walkthrough",
+    link: "/rx-suite", // Added redirect link
+    image: "/public/pexels-mikhail-nilov-8851727.jpg", 
     icon: (
       <svg width="40" height="40" viewBox="0 0 40 40" fill="none" className="text-terra-500">
         <rect x="6" y="8" width="28" height="20" rx="3" stroke="currentColor" strokeWidth="2.5" fill="none" />
@@ -77,7 +79,8 @@ const MODULE_DATA = [
       "AI root-cause trend analysis",
     ],
     cta: "Explore Rx Incident →",
-    duration: "2 min walkthrough",
+    link: "/rx-incident", // Added redirect link
+    image: "/public/pexels-diego-romero-471613950-17515225.jpg", 
     icon: (
       <svg width="40" height="40" viewBox="0 0 40 40" fill="none" className="text-terra-500">
         <rect x="10" y="4" width="20" height="32" rx="2" stroke="currentColor" strokeWidth="2.5" fill="none" />
@@ -88,7 +91,7 @@ const MODULE_DATA = [
   },
 ];
 
-const VideoShowcase = () => {
+const PhotoShowcase = () => {
   const [activeTab, setActiveTab] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [displayedTab, setDisplayedTab] = useState(0);
@@ -123,10 +126,10 @@ const VideoShowcase = () => {
           SEE IT IN ACTION
         </span>
         <h2 className="font-display text-4xl md:text-[48px] font-bold text-white leading-tight mb-5">
-          Watch what OneRx actually does.
+          See what OneRx actually does.
         </h2>
         <p className="font-body text-lg text-terra-300 max-w-[560px] mx-auto leading-relaxed px-5">
-          No sales pitch. No stock footage. Just a Canadian pharmacist's actual workflow — automated.
+          No sales pitch. No stock photos. Just a Canadian pharmacist's actual workflow — automated.
         </p>
       </div>
 
@@ -156,14 +159,14 @@ const VideoShowcase = () => {
         </div>
       </div>
 
-      {/* Video + Content Panel */}
+      {/* Image + Content Panel */}
       <div className="container-wide">
         <div
           className={`flex flex-col lg:flex-row gap-10 lg:gap-14 transition-all duration-500 delay-300 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
           }`}
         >
-          {/* Video Player — 60% */}
+          {/* Photo Panel — 60% */}
           <div className="lg:w-[60%] w-full">
             <div
               className={`relative bg-terra-800 rounded-2xl lg:rounded-[16px] border border-terra-700 overflow-hidden transition-opacity duration-200 ${
@@ -174,43 +177,17 @@ const VideoShowcase = () => {
                 aspectRatio: "16/9",
               }}
             >
-              {/* Poster / gradient placeholder */}
-              <div className="absolute inset-0 bg-gradient-to-br from-terra-950 to-terra-800">
-                {/* Subtle grid pattern */}
-                <div
-                  className="absolute inset-0"
-                  style={{
-                    backgroundImage:
-                      "linear-gradient(rgba(158,77,42,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(158,77,42,0.04) 1px, transparent 1px)",
-                    backgroundSize: "40px 40px",
-                  }}
-                />
-              </div>
+              {/* Image element */}
+              <img 
+                src={current.image} 
+                alt={`${current.label} interface preview`} 
+                className="absolute inset-0 w-full h-full object-cover"
+              />
 
-              {/* Play button */}
-              <button
-                className="absolute inset-0 flex items-center justify-center z-10 group"
-                aria-label={`Play ${current.label} walkthrough`}
-              >
-                <div className="w-16 h-16 rounded-full bg-terra-500 flex items-center justify-center transition-transform duration-200 group-hover:scale-110 animate-play-pulse">
-                  <svg
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="white"
-                  >
-                    <polygon points="6,3 21,12 6,21" />
-                  </svg>
-                </div>
-              </button>
-
-              {/* Bottom bar */}
-              <div className="absolute bottom-0 left-0 right-0 flex items-center justify-between px-5 py-3 z-10">
+              {/* Bottom bar overlay for the image */}
+              <div className="absolute bottom-0 left-0 right-0 flex items-center justify-between px-5 py-3 z-10 bg-gradient-to-t from-black/60 to-transparent">
                 <span className="bg-terra-500 text-white text-xs font-body px-3 py-1 rounded-full">
                   {current.label}
-                </span>
-                <span className="text-terra-400 text-[13px] font-body">
-                  {current.duration}
                 </span>
               </div>
             </div>
@@ -245,8 +222,9 @@ const VideoShowcase = () => {
                   </li>
                 ))}
               </ul>
+              {/* Dynamic href tag */}
               <a
-                href="#"
+                href={current.link}
                 className="font-body text-[15px] font-medium text-terra-500 hover:underline transition-all"
               >
                 {current.cta}
@@ -259,11 +237,11 @@ const VideoShowcase = () => {
       {/* Trust Strip */}
       <div className="mt-16 bg-terra-800 h-12 flex items-center justify-center">
         <p className="font-body text-[13px] text-terra-400 text-center px-5">
-          All videos show real OneRx workflows · Canada-hosted · No demo environment
+          All photos show real OneRx workflows · Canada-hosted · No demo environment
         </p>
       </div>
     </section>
   );
 };
 
-export default VideoShowcase;
+export default PhotoShowcase;

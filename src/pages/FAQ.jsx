@@ -3,7 +3,7 @@ import Navigation from "../components/Navigation";
 import Footer from "../components/Footer";
 
 export default function FAQ() {
-  // 🎨 BULLETPROOF THEME CONFIGURATION (Matches About.jsx exactly)
+  // 🎨 BULLETPROOF THEME CONFIGURATION
   const theme = {
     colors: {
       background: '#1a0d08',
@@ -20,9 +20,20 @@ export default function FAQ() {
       body: '"Inter", sans-serif',
     },
     layout: {
-      sectionPadding: '96px 0',
-      container: { maxWidth: '900px', margin: '0 auto', padding: '0 24px', width: '100%', boxSizing: 'border-box' },
-      card: { padding: '48px', borderRadius: '16px', boxSizing: 'border-box' },
+      // Container dynamically adapts padding for mobile vs desktop
+      container: { 
+        maxWidth: '900px', 
+        margin: '0 auto', 
+        padding: '0 clamp(16px, 5vw, 24px)', 
+        width: '100%', 
+        boxSizing: 'border-box' 
+      },
+      // Card dynamically adapts padding for mobile vs desktop
+      card: { 
+        padding: 'clamp(24px, 5vw, 48px)', 
+        borderRadius: '16px', 
+        boxSizing: 'border-box' 
+      },
     }
   };
 
@@ -36,7 +47,7 @@ export default function FAQ() {
 
   const bottomBorder = { borderBottom: `1px solid ${theme.colors.divider}` };
 
-  // --- FAQ DATA EXTRACTED FROM SCREENSHOTS ---
+  // --- FAQ DATA ---
   const faqData = [
     {
       letter: "A",
@@ -131,14 +142,21 @@ export default function FAQ() {
             alignItems: 'center', 
             background: 'none', 
             border: 'none', 
-            padding: '24px 0', 
+            padding: 'clamp(16px, 4vw, 24px) 0', 
             cursor: 'pointer',
             textAlign: 'left',
             color: isOpen ? theme.colors.textMain : theme.colors.textMuted,
-            transition: 'color 0.2s ease'
+            transition: 'color 0.2s ease',
+            boxSizing: 'border-box'
           }}
         >
-          <span style={{ fontSize: '1.125rem', fontWeight: isOpen ? '600' : '400', fontFamily: theme.fonts.body, paddingRight: '24px', lineHeight: '1.5' }}>
+          <span style={{ 
+            fontSize: 'clamp(1rem, 2.5vw, 1.125rem)', 
+            fontWeight: isOpen ? '600' : '400', 
+            fontFamily: theme.fonts.body, 
+            paddingRight: '16px', 
+            lineHeight: '1.5' 
+          }}>
             {item.q}
           </span>
           <svg 
@@ -156,64 +174,105 @@ export default function FAQ() {
           </svg>
         </button>
         
-        {/* Expandable Answer */}
+        {/* Expandable Answer: Uses Grid for perfect fluid height animation on any screen size */}
         <div 
           style={{ 
-            maxHeight: isOpen ? '500px' : '0px', 
-            overflow: 'hidden', 
-            transition: 'max-height 0.4s ease-in-out, opacity 0.4s ease-in-out',
+            display: 'grid',
+            gridTemplateRows: isOpen ? '1fr' : '0fr',
+            transition: 'grid-template-rows 0.4s ease-in-out, opacity 0.4s ease-in-out',
             opacity: isOpen ? 1 : 0
           }}
         >
-          <p style={{ paddingBottom: '32px', color: theme.colors.textMuted, fontSize: '1rem', lineHeight: '1.7', fontFamily: theme.fonts.body, margin: 0 }}>
-            {item.a}
-          </p>
+          <div style={{ overflow: 'hidden' }}>
+            <p style={{ 
+              paddingBottom: 'clamp(24px, 5vw, 32px)', 
+              color: theme.colors.textMuted, 
+              fontSize: 'clamp(0.9375rem, 2vw, 1rem)', 
+              lineHeight: '1.7', 
+              fontFamily: theme.fonts.body, 
+              margin: 0 
+            }}>
+              {item.a}
+            </p>
+          </div>
         </div>
       </div>
     );
   };
 
   return (
-    <div className="page-fade" style={{ backgroundColor: theme.colors.background, color: theme.colors.textMain, fontFamily: theme.fonts.body, minHeight: '100vh' }}>
+    <div className="page-fade" style={{ backgroundColor: theme.colors.background, color: theme.colors.textMain, fontFamily: theme.fonts.body, minHeight: '100vh', width: '100%', overflowX: 'hidden' }}>
       <Navigation />
 
       {/* 1. HERO SECTION */}
-      <section style={{ paddingTop: '180px', paddingBottom: '96px', ...bottomBorder }}>
+      <section style={{ 
+        paddingTop: 'clamp(120px, 15vw, 180px)', 
+        paddingBottom: 'clamp(64px, 10vw, 96px)', 
+        ...bottomBorder 
+      }}>
         <div style={{ ...theme.layout.container, textAlign: 'center', maxWidth: '800px' }}>
           <p style={{ color: theme.colors.accent, fontSize: '12px', fontWeight: 'bold', letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: '16px' }}>
             Knowledge Base
           </p>
-          <h1 style={{ fontFamily: theme.fonts.display, fontSize: '3.5rem', fontWeight: '500', lineHeight: '1.1', margin: '0 0 24px 0' }}>
+          <h1 style={{ 
+            fontFamily: theme.fonts.display, 
+            fontSize: 'clamp(2.5rem, 6vw, 3.5rem)', 
+            fontWeight: '500', 
+            lineHeight: '1.1', 
+            margin: '0 0 24px 0' 
+          }}>
             Frequently Asked Questions
           </h1>
-          <p style={{ color: theme.colors.textMuted, fontSize: '1.125rem', lineHeight: '1.7', margin: '0 auto', maxWidth: '600px' }}>
+          <p style={{ 
+            color: theme.colors.textMuted, 
+            fontSize: 'clamp(1rem, 3vw, 1.125rem)', 
+            lineHeight: '1.7', 
+            margin: '0 auto', 
+            maxWidth: '600px' 
+          }}>
             Everything you need to know about OneRx, our transparency model, and how we empower independent Canadian pharmacies.
           </p>
         </div>
       </section>
 
       {/* 2. FAQ ACCORDION SECTIONS */}
-      <section style={{ padding: '80px 0 120px 0' }}>
+      <section style={{ padding: 'clamp(48px, 8vw, 80px) 0 clamp(80px, 12vw, 120px) 0' }}>
         <div style={theme.layout.container}>
-          
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '48px' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 'clamp(32px, 5vw, 48px)' }}>
             {faqData.map((category, index) => (
               <div key={index} style={glassCard}>
                 {/* Highlight bar on card */}
                 <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '3px', backgroundColor: theme.colors.accent }}></div>
                 
                 {/* Category Header */}
-                <div style={{ display: 'flex', alignItems: 'center', marginBottom: '40px', paddingBottom: '32px', ...bottomBorder }}>
+                <div style={{ 
+                  display: 'flex', 
+                  alignItems: 'center', 
+                  marginBottom: 'clamp(24px, 5vw, 40px)', 
+                  paddingBottom: 'clamp(24px, 5vw, 32px)', 
+                  ...bottomBorder 
+                }}>
                   <div style={{ 
                     display: 'flex', alignItems: 'center', justifyContent: 'center', 
-                    width: '40px', height: '40px', borderRadius: '50%', 
+                    width: 'clamp(32px, 6vw, 40px)', 
+                    height: 'clamp(32px, 6vw, 40px)', 
+                    borderRadius: '50%', 
                     backgroundColor: 'rgba(223, 126, 90, 0.15)', 
-                    color: theme.colors.accent, fontWeight: 'bold', fontSize: '1.25rem',
-                    marginRight: '20px', flexShrink: 0
+                    color: theme.colors.accent, 
+                    fontWeight: 'bold', 
+                    fontSize: 'clamp(1rem, 2.5vw, 1.25rem)',
+                    marginRight: 'clamp(12px, 3vw, 20px)', 
+                    flexShrink: 0
                   }}>
                     {category.letter}
                   </div>
-                  <h2 style={{ fontFamily: theme.fonts.display, fontSize: '2rem', fontWeight: '500', margin: 0, color: theme.colors.textMain }}>
+                  <h2 style={{ 
+                    fontFamily: theme.fonts.display, 
+                    fontSize: 'clamp(1.5rem, 4vw, 2rem)', 
+                    fontWeight: '500', 
+                    margin: 0, 
+                    color: theme.colors.textMain 
+                  }}>
                     {category.title}
                   </h2>
                 </div>
@@ -231,17 +290,33 @@ export default function FAQ() {
               </div>
             ))}
           </div>
-
         </div>
       </section>
 
-      {/* 3. FINAL CTA (Matches About page consistency) */}
-      <section style={{ padding: '0 0 128px 0' }}>
-        <div style={{ ...theme.layout.container, textAlign: 'center', maxWidth: '800px', ...glassCard, padding: '64px 48px' }}>
-          <h2 style={{ fontFamily: theme.fonts.display, fontSize: '2.5rem', fontWeight: '500', lineHeight: '1.2', marginBottom: '24px', marginTop: 0 }}>
+      {/* 3. FINAL CTA */}
+      <section style={{ padding: '0 0 clamp(80px, 12vw, 128px) 0' }}>
+        <div style={{ 
+          ...theme.layout.container, 
+          textAlign: 'center', 
+          maxWidth: '800px', 
+          ...glassCard, 
+          padding: 'clamp(40px, 8vw, 64px) clamp(24px, 5vw, 48px)' 
+        }}>
+          <h2 style={{ 
+            fontFamily: theme.fonts.display, 
+            fontSize: 'clamp(1.75rem, 5vw, 2.5rem)', 
+            fontWeight: '500', 
+            lineHeight: '1.2', 
+            marginBottom: '24px', 
+            marginTop: 0 
+          }}>
             Still have questions?
           </h2>
-          <p style={{ color: theme.colors.textMuted, fontSize: '1.125rem', marginBottom: '40px' }}>
+          <p style={{ 
+            color: theme.colors.textMuted, 
+            fontSize: 'clamp(1rem, 3vw, 1.125rem)', 
+            marginBottom: 'clamp(24px, 6vw, 40px)' 
+          }}>
             We’re here to help. Reach out to our team to get the answers you need or schedule a full platform demonstration.
           </p>
           <button style={{ 
@@ -256,7 +331,8 @@ export default function FAQ() {
             cursor: 'pointer',
             display: 'inline-flex',
             alignItems: 'center',
-            transition: 'transform 0.2s ease'
+            transition: 'transform 0.2s ease',
+            whiteSpace: 'nowrap'
           }}>
             Contact Us 
             <svg style={{ width: '20px', height: '20px', marginLeft: '12px' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">

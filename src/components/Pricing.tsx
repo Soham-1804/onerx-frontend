@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Navigation from "../components/Navigation";
 import Footer from "../components/Footer";
 import ModuleCTA from "../components/ModuleCTA";
+import { useNavigate } from "react-router-dom";
 import { useScrollAnimation } from "../hooks/useScrollAnimation";
 
 export default function Pricing() {
@@ -13,6 +14,7 @@ export default function Pricing() {
   }, []);
 
   const [isAnnual, setIsAnnual] = useState(true);
+  const navigate = useNavigate();
 
   const { ref: headerRef, isVisible: headerVis } = useScrollAnimation();
   const { ref: pricingRef, isVisible: pricingVis } = useScrollAnimation();
@@ -181,6 +183,7 @@ export default function Pricing() {
                 </div>
 
                 <button 
+                onClick={() => navigate('/pricing')}
                   className={`w-full py-4 rounded-lg font-medium transition-colors mt-auto ${
                     plan.highlighted 
                       ? "bg-terra-500 text-white hover:bg-terra-400" 

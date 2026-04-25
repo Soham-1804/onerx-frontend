@@ -1,8 +1,11 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import Navigation from "../components/Navigation";
 import Footer from "../components/Footer";
 
 export default function TermsAndConditions() {
+  const navigate = useNavigate();
+
   // 🎨 BULLETPROOF THEME CONFIGURATION 
   const theme = {
     colors: {
@@ -103,7 +106,7 @@ export default function TermsAndConditions() {
             {/* Introduction */}
             <div style={bottomBorder}>
               <p style={{ ...textStyle, fontSize: '1.25rem', color: theme.colors.textMain }}>
-                Welcome to OneRx. By accessing our website <a href="https://www.myonerx.ca/" style={{ color: theme.colors.accent, textDecoration: 'none' }}>https://www.myonerx.ca/</a> or using our services, you agree to be bound by the following terms and conditions. [cite: 351]
+                Welcome to OneRx. By accessing our website <a href="https://www.myonerx.ca/" style={{ color: theme.colors.accent, textDecoration: 'none' }}>https://www.myonerx.ca/</a> or using our services, you agree to be bound by the following terms and conditions.
               </p>
               <p style={textStyle}>
                 Please read them carefully.
@@ -114,7 +117,7 @@ export default function TermsAndConditions() {
             <div style={bottomBorder}>
               <h2 style={sectionTitleStyle}>1. Acceptance of Terms</h2>
               <p style={textStyle}>
-                OneRx offers pharmacy-focused digital solutions including website creation, digital marketing, VoIP systems, eFax services, workflow automation, and cybersecurity protection. [cite: 357] All services are subject to change or discontinuation at our sole discretion. [cite: 358]
+                OneRx offers pharmacy-focused digital solutions including website creation, digital marketing, VoIP systems, eFax services, workflow automation, and cybersecurity protection. All services are subject to change or discontinuation at our sole discretion.
               </p>
             </div>
 
@@ -124,15 +127,15 @@ export default function TermsAndConditions() {
               <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 24px 0' }}>
                 <li style={listItemStyle}>
                   <DotIcon /> 
-                  <span>You agree to provide accurate and current information when registering or using our services. [cite: 360]</span>
+                  <span>You agree to provide accurate and current information when registering or using our services.</span>
                 </li>
                 <li style={listItemStyle}>
                   <DotIcon /> 
-                  <span>You are responsible for maintaining the confidentiality of your account information. [cite: 361]</span>
+                  <span>You are responsible for maintaining the confidentiality of your account information.</span>
                 </li>
                 <li style={listItemStyle}>
                   <DotIcon /> 
-                  <span>You agree not to misuse or interfere with our services or access them using a method other than the interface provided. [cite: 362]</span>
+                  <span>You agree not to misuse or interfere with our services or access them using a method other than the interface provided.</span>
                 </li>
               </ul>
             </div>
@@ -141,7 +144,7 @@ export default function TermsAndConditions() {
             <div style={bottomBorder}>
               <h2 style={sectionTitleStyle}>4. Intellectual Property </h2>
               <p style={textStyle}>
-                All content, trademarks, and technology on our site are the property of OneRx or its licensors. [cite: 364] You may not copy, reproduce, or distribute any content without prior written permission. [cite: 365]
+                All content, trademarks, and technology on our site are the property of OneRx or its licensors. You may not copy, reproduce, or distribute any content without prior written permission.
               </p>
             </div>
 
@@ -149,7 +152,7 @@ export default function TermsAndConditions() {
             <div style={bottomBorder}>
               <h2 style={sectionTitleStyle}>5. Subscription & Payment </h2>
               <p style={textStyle}>
-                Some services may require a subscription or payment. By subscribing, you agree to pay all applicable fees and taxes and abide by the billing terms provided at checkout. [cite: 367]
+                Some services may require a subscription or payment. By subscribing, you agree to pay all applicable fees and taxes and abide by the billing terms provided at checkout.
               </p>
             </div>
 
@@ -157,7 +160,7 @@ export default function TermsAndConditions() {
             <div style={bottomBorder}>
               <h2 style={sectionTitleStyle}>7. Disclaimers </h2>
               <p style={textStyle}>
-                Our services are provided "as is" and "as available." We do not guarantee uninterrupted or error-free service. [cite: 373] We are not responsible for delays, inaccuracies, or failures caused by external systems or user error. [cite: 374]
+                Our services are provided "as is" and "as available." We do not guarantee uninterrupted or error-free service. We are not responsible for delays, inaccuracies, or failures caused by external systems or user error.
               </p>
             </div>
 
@@ -215,20 +218,22 @@ export default function TermsAndConditions() {
             <h2 style={{ fontFamily: theme.fonts.display, fontSize: '2rem', fontWeight: '500', lineHeight: '1.3', marginBottom: '32px', marginTop: 0, color: theme.colors.textMain }}>
               TAKE THE NEXT STEP IN TRANSFORMING YOUR PHARMACY'S FUTURE.
             </h2>
-            <button style={{ 
-              backgroundColor: theme.colors.accent, 
-              color: '#ffffff', 
-              fontFamily: theme.fonts.body, 
-              fontSize: '1rem', 
-              fontWeight: 'bold', 
-              padding: '16px 32px', 
-              borderRadius: '50px', 
-              border: 'none', 
-              cursor: 'pointer',
-              display: 'inline-flex',
-              alignItems: 'center',
-              transition: 'transform 0.2s ease'
-            }}>
+            <button 
+              onClick={() => navigate('/pricing')}
+              style={{ 
+                backgroundColor: theme.colors.accent, 
+                color: '#ffffff', 
+                fontFamily: theme.fonts.body, 
+                fontSize: '1rem', 
+                fontWeight: 'bold', 
+                padding: '16px 32px', 
+                borderRadius: '50px', 
+                border: 'none', 
+                cursor: 'pointer',
+                display: 'inline-flex',
+                alignItems: 'center',
+                transition: 'transform 0.2s ease'
+              }}>
               BECOME A MEMBER
               <svg style={{ width: '20px', height: '20px', marginLeft: '12px' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>

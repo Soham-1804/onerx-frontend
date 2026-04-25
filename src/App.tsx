@@ -12,8 +12,8 @@ import NotFound from "./pages/NotFound.tsx";
 import About from "./pages/About.tsx";
 import FAQ from "./pages/FAQ";
 import Login from "./pages/Login.tsx";
-
-import Privacy from "./pages/Privacy";
+import MemberDashboard from "./pages/MemberDashboard";
+import Privacy from "./pages/Privacy.jsx";
 import Terms from "./pages/Terms";
 import Blog from "./pages/Blog.jsx";
 import Docs from "./pages/Docs";
@@ -22,6 +22,13 @@ import Insights from "./pages/Insights.tsx";
 import Documentation from "./pages/Documentation.tsx";
 import Press from "./pages/Press.tsx";
 import Contact from "./pages/Contact.tsx";
+import Pricing from "./pages/Pricing";
+import PressArticle from "./pages/PressArticle.tsx";
+import BlogArticle from "./pages/BlogArticle";
+import RxScribe from "./pages/RxScribe";
+import RxBrands from "./pages/RxBrands";
+import RxAlert from "./pages/RxAlert";
+import RxPOS from "./pages/RxPOS";
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -48,6 +55,14 @@ const App = () => (
             <Route path="/documentation" element={<Documentation/>}/>
             <Route path="/press" element={<Press/>}/>
             <Route path="/login" element={<Login/>}/>
+            <Route path="/member" element={<MemberDashboard/>}/>
+            <Route path="/pricing" element={<Pricing/>}/>
+            <Route path="/press/:slug" element={<PressArticle/>}/>
+            <Route path="/insights/:id" element={<BlogArticle />} />
+            <Route path="/rx-scribe" element={<RxScribe/>}/>
+            <Route path="/rx-brands" element={<RxBrands/>}/>
+            <Route path="/rx-pos" element={<RxPOS/>}/>
+            <Route path="/rx-alert" element={<RxAlert/>}/>
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

@@ -61,28 +61,20 @@ export default function Contact() {
                 <div>
                   <h3 className="font-display text-[20px] text-terra-950 mb-3">Enterprise Sales</h3>
                   <p className="text-[14px] text-terra-600 mb-1">Discuss custom deployments and volume pricing.</p>
-                  <a href="mailto:sales@myonerx.ca" className="text-[15px] font-medium text-terra-500 hover:text-terra-700 transition-colors">sales@myonerx.ca</a>
+                  <a href="mailto:admin@myonerx.ca" className="text-[15px] font-medium text-terra-500 hover:text-terra-700 transition-colors">admin@myonerx.ca</a>
                 </div>
 
                 <div className="border-t border-terra-200 pt-6">
                   <h3 className="font-display text-[20px] text-terra-950 mb-3">Technical Support</h3>
                   <p className="text-[14px] text-terra-600 mb-1">Current clients requiring immediate system assistance.</p>
                   <div className="flex items-center gap-4">
-                    <a href="mailto:support@myonerx.ca" className="text-[15px] font-medium text-terra-500 hover:text-terra-700 transition-colors">support@myonerx.ca</a>
-                    <span className="text-terra-300">|</span>
-                    <a href="tel:+18005550199" className="text-[15px] font-medium text-terra-500 hover:text-terra-700 transition-colors">1-800-555-0199</a>
+                    <a href="mailto:support@myonerx.ca" className="text-[15px] font-medium text-terra-500 hover:text-terra-700 transition-colors">admin@myonerx.ca</a>
+                    <span className="text-terra-300"></span>
+                    <a href="" className="text-[15px] font-medium text-terra-500 hover:text-terra-700 transition-colors"></a>
                   </div>
                 </div>
 
-                <div className="border-t border-terra-200 pt-6">
-                  <h3 className="font-display text-[20px] text-terra-950 mb-3">Headquarters</h3>
-                  <address className="text-[15px] text-terra-600 not-italic leading-relaxed">
-                    100 Wellington Street West<br />
-                    Suite 2200<br />
-                    Toronto, ON M5K 1J3<br />
-                    Canada
-                  </address>
-                </div>
+               
               </div>
             </div>
 

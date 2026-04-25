@@ -165,50 +165,7 @@ export default function About() {
           </div>
         </section>
 
-        {/* Leadership Team */}
-        <section ref={teamRef as any} className={`py-24 ${teamVis ? 'animate-fade-up' : 'opacity-0'}`}>
-          <div className="container-wide">
-            <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
-              <div className="max-w-xl">
-                <h2 className="font-display text-[40px] text-terra-950 mb-3">Leadership</h2>
-                <p className="text-terra-600">A multidisciplinary team combining decades of clinical pharmacy experience with enterprise software engineering.</p>
-              </div>
-              <Link to="/careers" className="text-[14px] font-medium text-terra-500 hover:text-terra-700 transition-colors flex items-center gap-2 whitespace-nowrap">
-                Join the team <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-              </Link>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {leadership.map((leader, idx) => (
-                <div key={idx} className="group cursor-default">
-                  {/* Stylized placeholder for high-end headshots */}
-                  <div className="w-full aspect-[4/5] bg-terra-100 rounded-lg mb-5 overflow-hidden relative border border-terra-200">
-                    <div className="absolute inset-0 bg-terra-800 opacity-0 group-hover:opacity-5 transition-opacity duration-500" />
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <span className="font-display text-[48px] text-terra-300 mix-blend-multiply">{leader.initials}</span>
-                    </div>
-                  </div>
-                  <h3 className="font-display text-[20px] text-terra-950 mb-1">{leader.name}</h3>
-                  <div className="text-[12px] uppercase tracking-widest text-terra-500 mb-3">{leader.role}</div>
-                  <p className="text-[14px] text-terra-600">{leader.background}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Investors / Backing */}
-        <section ref={investorsRef as any} className={`py-20 bg-terra-950 text-white border-b border-terra-900 ${investorsVis ? 'animate-fade-up' : 'opacity-0'}`}>
-          <div className="container-wide text-center">
-            <h3 className="text-[12px] uppercase tracking-widest text-terra-400 mb-8">Backed by healthcare & technology visionaries</h3>
-            <div className="flex flex-wrap justify-center items-center gap-12 md:gap-24 opacity-60 grayscale hover:grayscale-0 transition-all duration-700">
-              {/* Abstract SVGs acting as sophisticated VC/Investor logos */}
-              <svg width="120" height="40" viewBox="0 0 120 40" fill="currentColor"><path d="M10 20L20 10h20l10 10-10 10H20L10 20zM70 10h40v4H70v-4zm0 16h30v4H70v-4z"/></svg>
-              <svg width="100" height="40" viewBox="0 0 100 40" fill="currentColor"><circle cx="20" cy="20" r="12"/><path d="M40 10h50v20H40V10zm5 5v10h40V15H45z"/></svg>
-              <svg width="130" height="40" viewBox="0 0 130 40" fill="currentColor"><path d="M10 30L30 10l20 20 20-20v30H10z"/><text x="80" y="28" fontFamily="sans-serif" fontWeight="bold" fontSize="18">VENTURES</text></svg>
-            </div>
-          </div>
-        </section>
+        
 
         <TrustFeaturesRow />
         <ModuleCTA />

@@ -16,36 +16,8 @@ export default function Careers() {
   const { ref: rolesRef, isVisible: rolesVis } = useScrollAnimation();
   const { ref: benefitsRef, isVisible: benefitsVis } = useScrollAnimation();
 
-  const openRoles = [
-    {
-      department: "Engineering",
-      title: "Senior Frontend Developer",
-      location: "Remote / Hybrid",
-      type: "Full-time",
-      link: "#apply-frontend"
-    },
-    {
-      department: "Design",
-      title: "Lead Product Designer",
-      location: "Remote / Hybrid",
-      type: "Full-time",
-      link: "#apply-design"
-    },
-    {
-      department: "Customer Success",
-      title: "Pharmacy Implementation Specialist",
-      location: "Toronto, ON",
-      type: "Full-time",
-      link: "#apply-success"
-    },
-    {
-      department: "Engineering",
-      title: "Backend Data Engineer",
-      location: "Remote",
-      type: "Full-time",
-      link: "#apply-backend"
-    }
-  ];
+  // Leave empty to trigger the "No Open Roles" state
+  const openRoles: any[] = [];
 
   return (
     <div className="page-fade">
@@ -62,7 +34,7 @@ export default function Careers() {
             </p>
             <div className="mt-8 flex gap-3">
               <a href="#open-roles" className="px-6 py-3 bg-terra-500 rounded text-white font-medium hover:bg-terra-400 transition-colors">
-                View Open Roles
+                Join Our Talent Pool
               </a>
             </div>
           </div>
@@ -127,36 +99,57 @@ export default function Careers() {
           <div className="container-wide">
             <h3 className="font-display text-[36px] text-terra-950 mb-10">Open Positions</h3>
             
-            <div className="flex flex-col gap-4">
-              {openRoles.map((role, idx) => (
-                <a 
-                  key={idx} 
-                  href={role.link}
-                  className="group bg-white border border-terra-200 p-6 rounded-lg flex flex-col md:flex-row md:items-center justify-between hover:border-terra-500 hover:shadow-md transition-all duration-300"
-                >
-                  <div>
-                    <div className="text-[11px] uppercase tracking-widest text-terra-500 mb-1">{role.department}</div>
-                    <div className="font-display text-[22px] text-terra-950 group-hover:text-terra-600 transition-colors">{role.title}</div>
-                  </div>
-                  <div className="mt-4 md:mt-0 flex items-center gap-6">
-                    <div className="flex flex-col md:items-end">
-                      <span className="text-sm text-terra-600">{role.location}</span>
-                      <span className="text-xs text-terra-400">{role.type}</span>
-                    </div>
-                    <div className="hidden md:flex w-10 h-10 rounded-full bg-terra-100 items-center justify-center text-terra-500 group-hover:bg-terra-500 group-hover:text-white transition-colors">
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                    </div>
-                  </div>
+            {openRoles.length > 0 ? (
+              <>
+                <div className="flex flex-col gap-4">
+                  {openRoles.map((role, idx) => (
+                    <a 
+                      key={idx} 
+                      href={role.link}
+                      className="group bg-white border border-terra-200 p-6 rounded-lg flex flex-col md:flex-row md:items-center justify-between hover:border-terra-500 hover:shadow-md transition-all duration-300"
+                    >
+                      <div>
+                        <div className="text-[11px] uppercase tracking-widest text-terra-500 mb-1">{role.department}</div>
+                        <div className="font-display text-[22px] text-terra-950 group-hover:text-terra-600 transition-colors">{role.title}</div>
+                      </div>
+                      <div className="mt-4 md:mt-0 flex items-center gap-6">
+                        <div className="flex flex-col md:items-end">
+                          <span className="text-sm text-terra-600">{role.location}</span>
+                          <span className="text-xs text-terra-400">{role.type}</span>
+                        </div>
+                        <div className="hidden md:flex w-10 h-10 rounded-full bg-terra-100 items-center justify-center text-terra-500 group-hover:bg-terra-500 group-hover:text-white transition-colors">
+                          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </div>
+                      </div>
+                    </a>
+                  ))}
+                </div>
+                <div className="mt-12 text-center">
+                  <p className="text-terra-600 mb-4">Don't see a perfect fit? We're always looking for exceptional talent.</p>
+                  <a href="mailto:careers@myonerx.ca" className="inline-block px-6 py-2 border border-terra-300 rounded text-terra-700 hover:bg-terra-100 transition-colors">
+                    Send a General Application
+                  </a>
+                </div>
+              </>
+            ) : (
+              <div className="bg-white border border-terra-200 p-12 rounded-lg text-center flex flex-col items-center">
+                <div className="w-16 h-16 bg-terra-50 rounded-full flex items-center justify-center mb-5 text-terra-400">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                    <circle cx="9" cy="7" r="4" />
+                    <path d="M19 8v6" />
+                    <path d="M22 11h-6" />
+                  </svg>
+                </div>
+                <h4 className="font-display text-[26px] text-terra-950 mb-3">No Open Roles Currently</h4>
+                <p className="text-terra-600 max-w-lg mx-auto mb-8 leading-relaxed">
+                  Our team is currently fully staffed. However, we are always on the lookout for exceptional talent. If you believe your skills align with our mission, we'd still love to hear from you.
+                </p>
+                <a href="mailto:careers@myonerx.ca" className="inline-block px-8 py-3 bg-terra-500 rounded text-white font-medium hover:bg-terra-400 transition-colors shadow-sm">
+                  Send a General Application
                 </a>
-              ))}
-            </div>
-
-            <div className="mt-12 text-center">
-              <p className="text-terra-600 mb-4">Don't see a perfect fit? We're always looking for exceptional talent.</p>
-              <a href="mailto:careers@myonerx.ca" className="inline-block px-6 py-2 border border-terra-300 rounded text-terra-700 hover:bg-terra-100 transition-colors">
-                Send a General Application
-              </a>
-            </div>
+              </div>
+            )}
           </div>
         </section>
 

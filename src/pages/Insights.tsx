@@ -179,28 +179,7 @@ export default function Insights() {
       </main>
 
       {/* Newsletter Subscription */}
-      <section ref={newsletterRef as any} className={`py-24 bg-white border-b border-terra-100 ${newsletterVis ? 'animate-fade-up' : 'opacity-0'}`}>
-        <div className="container-wide max-w-4xl text-center">
-          <div className="w-16 h-16 bg-terra-50 text-terra-500 rounded-full flex items-center justify-center mx-auto mb-6">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-          </div>
-          <h3 className="font-display text-[36px] text-terra-950 mb-4">Stay ahead of the curve.</h3>
-          <p className="text-[16px] text-terra-600 mb-8 max-w-2xl mx-auto">
-            Get the latest insights on pharmacy operations, technology updates, and industry compliance delivered directly to your inbox once a month. No spam, just value.
-          </p>
-          <form className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto" onSubmit={(e) => e.preventDefault()}>
-            <input 
-              type="email" 
-              placeholder="Your professional email" 
-              className="flex-grow px-4 py-3 border border-terra-200 rounded focus:outline-none focus:border-terra-500 bg-terra-50 text-terra-950"
-              required
-            />
-            <button type="submit" className="px-6 py-3 bg-terra-950 text-white rounded hover:bg-terra-800 transition-colors font-medium whitespace-nowrap">
-              Subscribe
-            </button>
-          </form>
-        </div>
-      </section>
+     
 
       <ModuleCTA />
       <Footer />

@@ -14,7 +14,7 @@ const navLinks = [
   { label: "Home", href: "/" }, // Updated to route to the root
   { label: "About", href: "/about" },
   { label: "OneRx Hub", href: "#modules", hasDropdown: true },
-  { label: "Membership", href: "#pricing" },
+  { label: "Membership", href: "/pricing" },
   { label: "Contact", href: "/contact" },
 ];
 
@@ -78,10 +78,8 @@ const Navigation = () => {
 
         {/* Desktop CTAs */}
         <div className="hidden lg:flex items-center gap-3">
-          <Link to="/login" className="px-5 py-2 text-sm border border-terra-500 text-white rounded-lg hover:bg-terra-500/10 transition-colors">
-            Login
-          </Link>
-          <a href="#pricing" className="px-5 py-2 text-sm bg-terra-500 text-white rounded-lg hover:bg-terra-600 transition-colors active:scale-[0.97]">
+          
+          <a href="/pricing" className="px-5 py-2 text-sm bg-terra-500 text-white rounded-lg hover:bg-terra-600 transition-colors active:scale-[0.97]">
             Get Started
           </a>
         </div>

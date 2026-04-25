@@ -1,16 +1,25 @@
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { ArrowRight } from "lucide-react";
+// Note: If you are using Next.js, import Link from "next/link" and replace the <a> tag with <Link>
+// If you are using React Router, import { Link } from "react-router-dom"
 
 const modules = [
-  { prefix: "Rx", name: "Intelligence", cat: "ANALYTICS", desc: "AI-driven dispensing insights, claim approval tracking, and revenue analytics.", icon: "chart" },
-  { prefix: "Rx", name: "Manager", cat: "WORKFLOW", desc: "Task management, scheduling, and pharmacy operations in one view.", icon: "tasks" },
-  { prefix: "Rx", name: "POS", cat: "SALES", desc: "Point-of-sale built for pharmacy — ODB integration, DINs, and real-time pricing.", icon: "receipt" },
-  { prefix: "Rx", name: "Alert", cat: "NOTIFICATIONS", desc: "Drug recalls, shortage alerts, and regulatory updates. Never miss what matters.", icon: "bell" },
-  { prefix: "Rx", name: "Incident", cat: "COMPLIANCE", desc: "Incident reporting, audit trails, and NAPRA-compliant documentation.", icon: "clipboard" },
-  { prefix: "Rx", name: "Relief", cat: "STAFFING", desc: "Relief pharmacist matching and shift management across your network.", icon: "people" },
-  { prefix: "Rx", name: "Scribe", cat: "CLINICAL", desc: "Clinical documentation, MedsChecks notes, and patient consultations.", icon: "pen" },
-  { prefix: "Rx", name: "Brands", cat: "PURCHASING", desc: "Generic molecule selection, brand comparison, and net cost transparency.", icon: "tag" },
-  { prefix: "Rx", name: "Marketplace", cat: "NETWORK", desc: "Connect with verified distributors and negotiate better terms together.", icon: "network" },
+  { prefix: "Rx", name: "Intelligence", cat: "ANALYTICS", desc: "AI-driven dispensing insights, claim approval tracking, and revenue analytics.", icon: "chart", featured: false },
+  { prefix: "Rx", name: "Manager", cat: "WORKFLOW", desc: "Task management, scheduling, and pharmacy operations in one view.", icon: "tasks", featured: false },
+  { prefix: "Rx", name: "Scribe", cat: "CLINICAL", desc: "Clinical documentation, MedsChecks notes, and patient consultations.", icon: "pen", featured: true },
+ 
+  { prefix: "Rx", name: "Alert", cat: "NOTIFICATIONS", desc: "Drug recalls, shortage alerts, and regulatory updates. Never miss what matters.", icon: "bell", featured: true },
+  { prefix: "Rx", name: "Incident", cat: "COMPLIANCE", desc: "Incident reporting, audit trails, and NAPRA-compliant documentation.", icon: "clipboard", featured: false },
+   { prefix: "Rx", name: "POS", cat: "SALES", desc: "Point-of-sale built for pharmacy — ODB integration, DINs, and real-time pricing.", icon: "receipt", featured: true },
+  { prefix: "Rx", name: "Brands", cat: "PURCHASING", desc: "Generic molecule selection, brand comparison, and net cost transparency.", icon: "tag", featured: true },
+  { 
+    prefix: "Rx", 
+    name: "Suite", 
+    cat: "IT & TOOLS", 
+    desc: "Secure cloud backups, advanced threat protection, SEO/design, VoIP, eFaxes, digital forms, and an AI chatbot to automate and optimize operations.", 
+    icon: "monitor",
+    featured: false 
+  },
 ];
 
 const ModuleIcon = ({ type }: { type: string }) => {
@@ -34,6 +43,8 @@ const ModuleIcon = ({ type }: { type: string }) => {
       return <svg className={cls} viewBox="0 0 40 40" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M4,4 H18 L36,22 L22,36 L4,18 Z"/><circle cx="12" cy="12" r="3" fill="currentColor" opacity="0.3"/></svg>;
     case "network":
       return <svg className={cls} viewBox="0 0 40 40" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><circle cx="20" cy="6" r="4"/><circle cx="8" cy="32" r="4"/><circle cx="32" cy="32" r="4"/><line x1="20" y1="10" x2="8" y2="28"/><line x1="20" y1="10" x2="32" y2="28"/><line x1="8" y1="32" x2="32" y2="32"/></svg>;
+    case "monitor":
+      return <svg className={cls} viewBox="0 0 40 40" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><rect x="4" y="8" width="32" height="20" rx="2"/><line x1="12" y1="32" x2="28" y2="32"/><line x1="20" y1="28" x2="20" y2="32"/></svg>;
     default:
       return null;
   }
@@ -43,9 +54,9 @@ const ModuleGrid = () => {
   const { ref, isVisible } = useScrollAnimation(0.1);
 
   return (
-    <section id="modules" className="bg-terra-950 section-padding">
-      <div className="container-wide">
-        <div className="text-center max-w-2xl mx-auto mb-14">
+    <section id="modules" className="bg-terra-950 section-padding py-20">
+      <div className="container-wide mx-auto px-4">
+        <div className="text-center max-w-2xl mx-auto mb-16">
           <h2 className="font-display font-bold text-3xl sm:text-4xl text-white">
             Smart Solutions for Modern Canadian Pharmacies
           </h2>
@@ -54,31 +65,52 @@ const ModuleGrid = () => {
           </p>
         </div>
 
-        <div ref={ref} className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {modules.map((mod, i) => (
-            <div
-              key={mod.name}
-              className={`group bg-terra-800 rounded-xl p-6 border border-transparent hover:border-b-terra-500 hover:border-b-[3px] hover:-translate-y-1 transition-all duration-200 ${
-                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
-              }`}
-              style={{ transitionDelay: `${i * 60}ms`, transitionDuration: "600ms" }}
-            >
-              <div className="flex items-start justify-between mb-4">
-                <div>
-                  <span className="text-terra-500 italic font-display text-sm">{mod.prefix}</span>
-                  <span className="text-white font-bold font-display text-lg ml-1">{mod.name}</span>
-                  <div className="text-[10px] tracking-[0.15em] uppercase text-terra-400 mt-1">{mod.cat}</div>
+        <div ref={ref} className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {modules.map((mod, i) => {
+            // Generate the URL slug dynamically: "Rx Intelligence" -> "/rx-intelligence"
+            const moduleSlug = `/${mod.prefix.toLowerCase()}-${mod.name.toLowerCase()}`;
+
+            return (
+              <div
+                key={mod.name}
+                className={`relative group bg-terra-800 rounded-xl p-6 transition-all duration-300 ease-out ${
+                  mod.featured 
+                    ? "border border-terra-500/40 shadow-[0_4px_20px_rgba(204,120,92,0.1)] hover:border-terra-500 hover:-translate-y-1" 
+                    : "border border-transparent hover:border-b-terra-500 hover:border-b-[3px] hover:-translate-y-1"
+                } ${
+                  isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+                }`}
+                style={{ transitionDelay: `${i * 60}ms`, transitionDuration: "600ms" }}
+              >
+                {/* Featured Badge */}
+                {mod.featured && (
+                  <div className="absolute -top-3 right-6 bg-terra-500 text-terra-950 text-[10px] font-bold uppercase tracking-[0.2em] px-3 py-1 rounded-full shadow-md z-10">
+                    Featured
+                  </div>
+                )}
+
+                <div className="flex items-start justify-between mb-4">
+                  <div>
+                    <span className="text-terra-500 italic font-display text-sm">{mod.prefix}</span>
+                    <span className="text-white font-bold font-display text-lg ml-1">{mod.name}</span>
+                    <div className="text-[10px] tracking-[0.15em] uppercase text-terra-400 mt-1">{mod.cat}</div>
+                  </div>
+                  <div className="group-hover:brightness-125 transition-all">
+                    <ModuleIcon type={mod.icon} />
+                  </div>
                 </div>
-                <div className="group-hover:brightness-125 transition-all">
-                  <ModuleIcon type={mod.icon} />
-                </div>
+                <p className="text-terra-300 text-sm leading-relaxed mb-6">{mod.desc}</p>
+                
+                {/* Dynamically assign the generated slug to the href attribute */}
+                <a 
+                  href={moduleSlug} 
+                  className="text-terra-400 text-sm flex items-center gap-1 hover:text-terra-300 transition-colors mt-auto w-fit"
+                >
+                  View Module <ArrowRight className="w-3.5 h-3.5" />
+                </a>
               </div>
-              <p className="text-terra-300 text-sm leading-relaxed mb-4">{mod.desc}</p>
-              <a href="#" className="text-terra-400 text-sm flex items-center gap-1 hover:text-terra-300 transition-colors">
-                View Module <ArrowRight className="w-3.5 h-3.5" />
-              </a>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

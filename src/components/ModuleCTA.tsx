@@ -10,7 +10,7 @@ export default function ModuleCTA() {
           <p className="text-terra-100 mt-2">Join Canadian independent pharmacies already on OneRx.</p>
         </div>
         <div className="flex gap-3">
-          <Link to="/" className="px-5 py-2 bg-white text-terra-950 rounded-md">Get Started</Link>
+          <Link to="/pricing" className="px-5 py-2 bg-white text-terra-950 rounded-md">Get Started</Link>
           <a href="#" className="px-5 py-2 border border-white text-white rounded-md">Book a Demo</a>
         </div>
       </div>

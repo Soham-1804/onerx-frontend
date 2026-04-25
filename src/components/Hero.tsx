@@ -25,7 +25,7 @@ const Hero = () => {
           </p>
           <div className="mt-8 flex flex-wrap gap-4">
             <a
-              href="#pricing"
+              href="/pricing"
               className="inline-flex items-center justify-center h-12 px-8 bg-terra-500 text-white font-medium rounded-lg hover:bg-terra-600 transition-colors active:scale-[0.97] text-base"
             >
               Get started

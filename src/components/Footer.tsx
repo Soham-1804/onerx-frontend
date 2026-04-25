@@ -78,8 +78,8 @@ const Footer = () => {
 
             {/* SOCIAL */}
             <div className="flex gap-4 mt-6">
-              <a href="#" className="hover:opacity-80">LinkedIn</a>
-              <a href="#" className="hover:opacity-80">X</a>
+              <a href="https://www.linkedin.com/company/onerx-inc/" className="hover:opacity-80">LinkedIn</a>
+              
             </div>
           </div>
         </div>
@@ -95,7 +95,7 @@ const Footer = () => {
             </p>
           </div>
           <Link
-            to="/get-started"
+            to="/pricing"
             className="bg-terra-300 text-terra-900 px-5 py-2 rounded-lg text-sm font-medium hover:opacity-90"
           >
             Get Started

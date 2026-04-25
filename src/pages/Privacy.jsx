@@ -1,8 +1,11 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import Navigation from "../components/Navigation";
 import Footer from "../components/Footer";
 
 export default function PrivacyPolicy() {
+  const navigate = useNavigate();
+
   // 🎨 BULLETPROOF THEME CONFIGURATION 
   const theme = {
     colors: {
@@ -252,20 +255,22 @@ export default function PrivacyPolicy() {
             <h2 style={{ fontFamily: theme.fonts.display, fontSize: '2rem', fontWeight: '500', lineHeight: '1.3', marginBottom: '32px', marginTop: 0, color: theme.colors.textMain }}>
               Take the next step in transforming your pharmacy's future.
             </h2>
-            <button style={{ 
-              backgroundColor: theme.colors.accent, 
-              color: '#ffffff', 
-              fontFamily: theme.fonts.body, 
-              fontSize: '1rem', 
-              fontWeight: 'bold', 
-              padding: '16px 32px', 
-              borderRadius: '50px', 
-              border: 'none', 
-              cursor: 'pointer',
-              display: 'inline-flex',
-              alignItems: 'center',
-              transition: 'transform 0.2s ease'
-            }}>
+            <button 
+              onClick={() => navigate('/pricing')}
+              style={{ 
+                backgroundColor: theme.colors.accent, 
+                color: '#ffffff', 
+                fontFamily: theme.fonts.body, 
+                fontSize: '1rem', 
+                fontWeight: 'bold', 
+                padding: '16px 32px', 
+                borderRadius: '50px', 
+                border: 'none', 
+                cursor: 'pointer',
+                display: 'inline-flex',
+                alignItems: 'center',
+                transition: 'transform 0.2s ease'
+              }}>
               BECOME A MEMBER
               <svg style={{ width: '20px', height: '20px', marginLeft: '12px' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
