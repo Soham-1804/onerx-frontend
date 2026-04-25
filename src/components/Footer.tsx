@@ -14,9 +14,8 @@ const footerLinks = {
     { name: "Rx Intelligence", path: "/rx-intelligence" },
     { name: "Rx Manager", path: "/rx-manager" },
     { name: "Rx Suite", path: "/rx-suite" },
-    { name: "Rx Incident", path: "/rx-incident" },
-    { name: "Rx Scribe", path: "/rx-scribe" },
-    { name: "Rx Brands", path: "/rx-brands" },
+    { name: "Rx Incident", path: "/rx-incident" }
+   
   ],
   Resources: [
     { name: "Blog", path: "/insights" },
